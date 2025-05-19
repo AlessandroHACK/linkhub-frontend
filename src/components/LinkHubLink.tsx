@@ -1,11 +1,21 @@
 import { SocialNetwork } from "../types"
 import { FaFacebook, FaGithub, FaInstagram, FaXTwitter, FaYoutube, FaTiktok, FaTwitch, FaLinkedin } from "react-icons/fa6"
-
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 type LinkHubLinkProps = {
     link: SocialNetwork
 }
 
 export default function LinkHubLink({ link }: LinkHubLinkProps) {
+    const { attributes, listeners, setNodeRef, transform, transition} = useSortable({
+        id: link.id
+    })
+
+   const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  }
+
     const icons: Record<string, React.ReactNode> = {
         facebook: <FaFacebook className="w-5 h-5" />,
         github: <FaGithub className="w-5 h-5" />,
@@ -29,9 +39,14 @@ export default function LinkHubLink({ link }: LinkHubLinkProps) {
     }
 
     return (
-        <li className={`${colors[link.name] || "bg-slate-100 hover:bg-slate-200 text-black"} 
-            px-10 py-2 flex items-center gap-3 rounded-lg transition-all duration-300
+        <li 
+      ref={setNodeRef}
+      style={style}
+            className={`${colors[link.name] || "bg-slate-100 hover:bg-slate-200 text-black"} 
+            px-10 py-2 flex items-center gap-3 rounded-lg 
             shadow-sm hover:shadow-md cursor-pointer`}
+      {...attributes}
+      {...listeners}
         >
             <div className="flex items-center justify-center w-6 h-6">
                 {icons[link.name] || <FaGithub className="w-5 h-5" />}

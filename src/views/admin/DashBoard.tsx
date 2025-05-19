@@ -132,7 +132,7 @@ export default function DashBoard() {
              enabled: false }
         } 
         // 2.2: Para enlaces con ID mayor al deshabilitado
-        else if(link.id > indexToUpdate) {
+        else if(link.id > indexToUpdate && (indexToUpdate !== 0 && link.id===1)) {
           // Reduce su ID para mantener secuencia
           return { 
             ...link,
@@ -170,7 +170,7 @@ export default function DashBoard() {
  
         <button 
           className="bg-black hover:bg-white hover:text-black hover:border-black border border-black p-2 text-white uppercase font-black text-xs rounded-lg cursor-pointer w-full"
-          onClick={() => mutate(user)} // Ejecuta la mutación con los datos del usuario
+          onClick={() => mutate(queryClient.getQueryData(['user'])!)} // Ejecuta la mutación con los datos del usuario
         >
           Guardar Cambios
         </button>

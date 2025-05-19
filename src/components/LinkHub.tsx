@@ -6,7 +6,7 @@ import { UserIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react'
 import LinkHubLink from './LinkHubLink'
 import Sidebar from './Sidebar'
-import Header from './Header'
+
 
 type linkHubProps = {
     data: User
@@ -22,7 +22,7 @@ export default function LinkHub({ data }: linkHubProps) {
 
         return (
         <>
-     <Header />
+     
       <Sidebar />
       <main className="md:ml-64">
             <div className="bg-slate-100 min-h-screen py-10">

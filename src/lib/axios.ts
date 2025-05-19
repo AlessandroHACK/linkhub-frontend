@@ -1,15 +1,9 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
-})
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true // Esto es esencial para enviar cookies
+});
 
-api.interceptors.request.use( config => {
-    const token = localStorage.getItem('AUTH_TOKEN')
-    if(token){
-        config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-})
 
-export default api
+export default api;

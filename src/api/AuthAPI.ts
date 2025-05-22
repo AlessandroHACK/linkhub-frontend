@@ -1,6 +1,6 @@
 import api from "../lib/axios";
 import { isAxiosError } from "axios";
-import { User, UserLogin, UserRegisterForm } from "../types";
+import {  userHandleSchema, UserLogin, UserRegisterForm, userSchema } from "../types";
 
 export async function createAccount(formData: UserRegisterForm) {
     try {
@@ -32,24 +32,6 @@ export async function login(formData: UserLogin) {
     }
 }
 
-export async function getUser() {
-    try {
-        const url = '/auth/user';
-        const { data } = await api.get<User>(url);
-        return data;
-    } catch (error) {
-        if (isAxiosError(error) && error.response) {
-            
-            if (error.response.status === 401) {
-                throw new Error('Sesión expirada');
-            }
-            throw new Error(error.response.data.error);
-        }
-        throw new Error('Error al obtener el usuario');
-    }
-}
-
-// Función adicional para logout
 export async function logout() {
     try {
         const url = '/auth/logout';
@@ -61,4 +43,44 @@ export async function logout() {
         }
         throw new Error('Error al cerrar sesión');
     }
+}
+export async function getUser() {
+    try {
+        const url = '/auth/user';
+        const { data } = await api.get(url);
+      const response = userSchema.safeParse(data)
+                if(response.success) {
+            return response.data
+        }
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            
+            if (error.response.status === 401) {
+                throw new Error('Sesión expirada');
+            }
+            throw new Error(error.response.data.error);
+        }
+        throw new Error('Usuario no encontrado');
+    }
+}
+
+
+
+
+export async function getUserByHandle(handle : string) {
+    try {
+        const url = `/auth/${handle}`
+        const { data } = await api(url)
+        const response = userHandleSchema.safeParse(data)
+                if(response.success) {
+            return response.data
+        }
+
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+        throw new Error('Usuario no encontrado');
+    }
+    
 }

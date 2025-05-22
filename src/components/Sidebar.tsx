@@ -2,7 +2,6 @@ import {
   LinkIcon,
   Cog6ToothIcon,
   ChartBarIcon,
-  HomeIcon,
   XMarkIcon,
   Bars3Icon,
   UserIcon 
@@ -50,7 +49,6 @@ export default function Sidebar() {
   }
 
   const tabs = [
-    { name: 'Inicio', href: '/', icon: HomeIcon },
     { name: 'Mis Enlaces', href: '/admin', icon: LinkIcon },
     { name: 'Mi Perfil', href: '/admin/profile', icon: UserIcon },
     { name: 'Estadísticas', href: '/admin/analytics', icon: ChartBarIcon },
@@ -86,8 +84,8 @@ export default function Sidebar() {
         } md:translate-x-0 transition-all duration-300 ease-in-out`}
       >
         {/* Nombre de la app */}
-        <div className="px-6 pt-6">
-          <h1 className="text-2xl font-bold text-indigo-600 mb-6">LinkHUb</h1>
+        <div className="px-6 pt-6 pb-6">
+          <a href='/admin' className="text-2xl font-bold text-indigo-600 mb-6">LinkHub</a>
         </div>
 
         {/* Sección de usuario */}

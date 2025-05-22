@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import LinkHubLink from './LinkHubLink'
 import Sidebar from './Sidebar'
 import { useQueryClient } from '@tanstack/react-query'
+import RootFooter from './RootFooter'
 
 
 type linkHubProps = {
@@ -53,7 +54,7 @@ export default function LinkHub({ data }: linkHubProps) {
                         <div className="flex justify-end">
                             <Link
                                 className="font-bold text-right text-slate-800 text-xl"
-                                to={''}
+                                to={`/${data.handle}`}
                                 target="_blank"
                                 rel="noreferrer noopener"
                             >Visitar Mi Perfil:  <span className='text-blue-500 underline'>/{data.handle}</span></Link>
@@ -126,6 +127,7 @@ export default function LinkHub({ data }: linkHubProps) {
                     </main>
                 </div>
             </main>
+            <RootFooter/>
         </>
     )
 }

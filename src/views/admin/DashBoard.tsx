@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { social } from "../../data/social" // Datos iniciales de redes sociales
-import SocialInput from "../../components/profile/SocialInput" 
+import SocialInput from "../../components/admin/SocialInput"
 import { isValidUrl } from "../../utils" 
 import { toast } from "react-toastify" 
 import { useMutation, useQueryClient } from "@tanstack/react-query" 

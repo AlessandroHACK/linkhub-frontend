@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, useParams } from "react-router-dom";
-import { getUserByHandle } from "../../api/AuthAPI";
+
 import HandleData from "../../components/public/HandleData";
+import { getUserByHandle } from "../../api/UserAPI";
 
 export default function Handle() {
     const params = useParams()

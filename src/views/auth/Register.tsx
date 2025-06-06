@@ -4,13 +4,14 @@ import { UserRegisterForm } from "../../types"
 import { useMutation } from "@tanstack/react-query"
 import { createAccount } from "../../api/AuthAPI"
 import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export default function Register() {
+    const location = useLocation()
     const initialValues: UserRegisterForm  = {
         name: '',
         email: '',
-        handle: '',
+        handle: location?.state?.handle || '',
         password: '',
         password_confirmation: '',
       }

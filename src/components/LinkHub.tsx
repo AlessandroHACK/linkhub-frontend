@@ -43,7 +43,7 @@ export default function LinkHub({ data }: linkHubProps) {
         }
     }
     return (
-        <>
+        <> 
 
             <Sidebar />
             <main className="md:ml-64">

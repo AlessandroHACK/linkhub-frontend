@@ -1,4 +1,5 @@
 import RootFooter from "../../components/RootFooter";
+import SearchForm from "../../components/SearchForm";
 
 export default function Home() {
   return (
@@ -24,8 +25,11 @@ export default function Home() {
               Registrarse
             </a>
           </div>
+          <SearchForm/>
         </div>
+         
       </div>
+     
       <RootFooter/>
     </div>
   );

@@ -1,6 +1,6 @@
 import api from "../lib/axios";
 import { isAxiosError } from "axios";
-import {  userHandleSchema, UserLogin, UserRegisterForm, userSchema } from "../types";
+import {  UserLogin, UserRegisterForm, userSchema } from "../types";
 
 export async function createAccount(formData: UserRegisterForm) {
     try {
@@ -36,10 +36,10 @@ export async function logout() {
     try {
         const url = '/auth/logout';
         await api.post(url);
-        return true;
+        return 'Sesión cerrada correctamente'; // Devuelve un mensaje en lugar de true
     } catch (error) {
         if (isAxiosError(error) && error.response) {
-            throw new Error(error.response.data.error);
+            throw new Error(error.response.data.error || 'Error al cerrar sesión');
         }
         throw new Error('Error al cerrar sesión');
     }
@@ -62,25 +62,4 @@ export async function getUser() {
         }
         throw new Error('Usuario no encontrado');
     }
-}
-
-
-
-
-export async function getUserByHandle(handle : string) {
-    try {
-        const url = `/auth/${handle}`
-        const { data } = await api(url)
-        const response = userHandleSchema.safeParse(data)
-                if(response.success) {
-            return response.data
-        }
-
-    } catch (error) {
-        if (isAxiosError(error) && error.response) {
-            throw new Error(error.response.data.error);
-        }
-        throw new Error('Usuario no encontrado');
-    }
-    
 }

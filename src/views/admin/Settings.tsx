@@ -3,7 +3,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { useMutation } from "@tanstack/react-query";
 
 import { toast } from "react-toastify";
-import { changePassword } from "../../api/ProfileAPI";
+import { changePassword } from "../../api/UserAPI";
 import { UpdateCurrentUserPasswordForm } from "../../types";
 
 export default function Settings() {

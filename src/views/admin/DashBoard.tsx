@@ -5,7 +5,7 @@ import { isValidUrl } from "../../utils"
 import { toast } from "react-toastify" 
 import { useMutation, useQueryClient } from "@tanstack/react-query" 
 import { SocialNetwork, User } from "../../types" 
-import { updateProfile } from "../../api/ProfileAPI" 
+import { updateProfile } from "../../api/UserAPI" 
 
 export default function DashBoard() {
   // Estado para manejar los enlaces sociales (inicialmente con los datos por defecto)

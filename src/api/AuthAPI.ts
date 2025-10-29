@@ -36,7 +36,7 @@ export async function logout() {
     try {
         const url = '/auth/logout';
         await api.post(url);
-        return 'Sesión cerrada correctamente'; // Devuelve un mensaje en lugar de true
+        return 'Sesión cerrada correctamente';
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error || 'Error al cerrar sesión');

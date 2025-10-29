@@ -66,7 +66,7 @@ export default function Sidebar() {
         aria-hidden="true"
       />
 
-      {/* Hamburger button (mobile only) - Se oculta cuando el sidebar está abierto */}
+
       {!sidebarOpen && (
         <button
           className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg hover:bg-gray-100 transition-colors"
@@ -83,12 +83,12 @@ export default function Sidebar() {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 transition-all duration-300 ease-in-out`}
       >
-        {/* Nombre de la app */}
+
         <div className="px-6 pt-6 pb-6">
           <a href='/admin' className="text-2xl font-bold text-indigo-600 mb-6">LinkHub</a>
         </div>
 
-        {/* Sección de usuario */}
+   
         <div className="flex items-center px-6 pb-6 border-b border-indigo-100">
           <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center overflow-hidden mr-3">
             {data.image ? (
